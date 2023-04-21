@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+}
+
+/* write a container class that will center the board on the page vertically and horizontally */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+board {
+  width: 450px;
+  height: 450px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+square {
+  float: left;
+  width: 33.33%;
+  height: 33.33%;
+  border: 6px solid white;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  cursor: pointer;
+}
+
+square:nth-child(-n+3) {
+  border-top-width: 0px;
+}
+
+square:nth-child(3n+1) {
+  border-left-width: 0px;
+}
+
+
+piece {
+  position: relative;
+  will-change: transform;
+  transform: translate3d(0,0,0);
+  animation: appear .2s cubic-bezier(0.5,1.8,0.1,1.1);
+}
+
+.o {
+  display: block;
+  left: 16.66%;
+  top: 16.66%;
+  width: 66.66%;
+  height: 66.66%;
+  border-radius: 50%;
+  border: 20px solid white;
+}
+
+.x {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.x::before, .x::after {
+  position: absolute;
+  content: '';
+  width: 80%;
+  height: 20px;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.x::before {
+  transform: rotate(45deg);
+}
+
+.x::after {
+  transform: rotate(-45deg);
+}
+
+/* write a css media query that would make the squares smaller on a mobile device */
+@media screen and (max-width: 500px) {
+  board {
+    width: 90vw;
+    height: 90vw;
+  }
+
+  .o {
+    border-width: 15px;
+  }
+
+  .x::before, .x::after {
+    height: 15px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .o {
+    border-width: 10px;
+  }
+
+  .x::before, .x::after {
+    height: 10px;
+  }
+
+  square {
+    border-width: 4px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+  }
+
+  square:nth-child(-n+3) {
+    border-top-width: 0px;
+  }
+  
+  square:nth-child(3n+1) {
+    border-left-width: 0px;
+  }
+}
