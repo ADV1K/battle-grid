@@ -4,6 +4,8 @@
 
 body {
   background-color: #000;
+  color: white;
+  margin: 0;
 }
 
 /* write a container class that will center the board on the page vertically and horizontally */
@@ -48,6 +50,7 @@ piece {
   will-change: transform;
   transform: translate3d(0,0,0);
   animation: appear .2s cubic-bezier(0.5,1.8,0.1,1.1);
+  user-select: none;
 }
 
 .o {
@@ -88,10 +91,17 @@ piece {
 }
 
 /* write a css media query that would make the squares smaller on a mobile device */
+@media screen and (max-height: 600px) {
+  board {
+    width: min(90vw, 90vh);
+    height: min(90vw, 90vh);
+  }
+}
+
 @media screen and (max-width: 500px) {
   board {
-    width: 90vw;
-    height: 90vw;
+    width: min(90vw, 90vh);
+    height: min(90vw, 90vh);
   }
 
   .o {
@@ -112,6 +122,7 @@ piece {
     height: 10px;
   }
 
+  /* reduce the thickness of grid lines on a mobile device */
   square {
     border-width: 4px;
     border-right-width: 0px;

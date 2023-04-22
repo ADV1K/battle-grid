@@ -1,0 +1,9 @@
+<board>
+{% for i in range(9) %}
+  <square hx-get="/move/{{ i + 1}}">
+    {% if state[i] %}
+      <piece class="{{ state[i] }}"></piece>
+    {% endif %}
+  </square>
+{% endfor %}
+</board>

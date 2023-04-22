@@ -1,0 +1,19 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+
+<div class="container" 
+  hx-ext="sse" 
+  sse-connect="/updates" 
+  sse-swap="message" 
+  _="on click from <piece/> in me log the target"
+>
+  {% include "board.jinja" %}
+</div>
+
+<audio id="note-high" src="{{ url_for('static', path='/audio/note-high.mp3') }}" preload="auto" hidden></audio>
+<audio id="note-low" src="{{ url_for('static', path='/audio/note-low.mp3') }}" preload="auto" hidden></audio>
+<audio id="game-over" src="{{ url_for('static', path='/audio/game-over.mp3') }}" preload="auto" hidden></audio>
+<audio id="game-over-tie" src="{{ url_for('static', path='/audio/game-over-tie.mp3') }}" preload="auto" hidden></audio>
+
+{% endblock %}
